@@ -6,13 +6,20 @@ public class SaveStudentOrder {
         so.wFirstName = "Daria";
         so.wLastName = "Petrova";
 
-        long answer = saveStudentOrder(so);
-        System.out.println(answer);
+        StudentOrder so1 = new StudentOrder();
+        so1.hFirstName = "Aleksey";
+        so1.hLastName = "Ivanov";
+        so1.wFirstName = "Daria";
+        so1.wLastName = "Petrova";
+
+        saveStudentOrder(so);
+        saveStudentOrder(so1);
     }
 
-    static long saveStudentOrder(StudentOrder studentOrder) {
-        long answer = 199;
+    static void saveStudentOrder(StudentOrder studentOrder) {
+        StudentOrderValidator studentOrderValidator = new StudentOrderValidator();
+        studentOrderValidator.checkAll(studentOrder);
         System.out.println("SaveStudentOrder: " + studentOrder.hLastName);
-        return answer;
+        return;
     }
 }

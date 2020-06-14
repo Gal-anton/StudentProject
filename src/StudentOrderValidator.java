@@ -1,10 +1,8 @@
 public class StudentOrderValidator {
     public static void main(String[] args) {
-        checkAll();
     }
 
-    static void checkAll() {
-        StudentOrder studentOrder = readStudentOrder();
+    static void checkAll(StudentOrder studentOrder) {
 
         while (true) {
             if (studentOrder == null) {
@@ -17,36 +15,42 @@ public class StudentOrderValidator {
                 AnswerStudent studentAnswer = checkStudent(studentOrder);
 
                 sendMail(studentOrder);
-                studentOrder = readStudentOrder();
             }
 
+            studentOrder = readStudentOrder();
         }
     }
 
     static StudentOrder readStudentOrder() {
         StudentOrder studentOrder = new StudentOrder();
-        return studentOrder;
+        return null;
     }
 
     static AnswerCityRegister checkCityRegister(StudentOrder studentOrder) {
-        AnswerCityRegister answer = new AnswerCityRegister();
-        answer.success = false;
-        return answer;
+        CityRegisterValidator crv1 = new CityRegisterValidator();
+        crv1.hostName = "hostName1";
+        crv1.login = "login1";
+        crv1.password = "password1";
+        CityRegisterValidator crv2 = new CityRegisterValidator();
+        crv2.hostName = "hostName2";
+        crv2.login = "login2";
+        crv2.password = "password2";
+        AnswerCityRegister ans1 = crv1.checkCityRegister(studentOrder);
+        AnswerCityRegister ans2 = crv2.checkCityRegister(studentOrder);
+
+        return ans1;
     }
 
     static AnswerWedding checkWedding(StudentOrder studentOrder) {
-        AnswerWedding answer = new AnswerWedding();
-        return answer;
+        return WeddingValidator.checkWedding(studentOrder);
     }
 
     static AnswerChildren checkChildren(StudentOrder studentOrder) {
-        AnswerChildren answer = new AnswerChildren();
-        return answer;
+        return ChildrenValidator.checkChildren(studentOrder);
     }
 
     static AnswerStudent checkStudent(StudentOrder studentOrder) {
-        AnswerStudent answer = new AnswerStudent();
-        return answer;
+        return StudentValidator.checkStudent(studentOrder);
     }
 
     static void sendMail(StudentOrder studentOrder) {
