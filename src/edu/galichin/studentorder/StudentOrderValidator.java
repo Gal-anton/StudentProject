@@ -1,3 +1,12 @@
+package edu.galichin.studentorder;
+
+import edu.galichin.studentorder.domain.*;
+import edu.galichin.studentorder.mail.MailSender;
+import edu.galichin.studentorder.validator.ChildrenValidator;
+import edu.galichin.studentorder.validator.CityRegisterValidator;
+import edu.galichin.studentorder.validator.StudentValidator;
+import edu.galichin.studentorder.validator.WeddingValidator;
+
 public class StudentOrderValidator {
     public static void main(String[] args) {
     }
@@ -30,30 +39,26 @@ public class StudentOrderValidator {
         CityRegisterValidator crv1 = new CityRegisterValidator();
         crv1.hostName = "hostName1";
         crv1.login = "login1";
-        crv1.password = "password1";
-        CityRegisterValidator crv2 = new CityRegisterValidator();
-        crv2.hostName = "hostName2";
-        crv2.login = "login2";
-        crv2.password = "password2";
         AnswerCityRegister ans1 = crv1.checkCityRegister(studentOrder);
-        AnswerCityRegister ans2 = crv2.checkCityRegister(studentOrder);
-
         return ans1;
     }
 
     static AnswerWedding checkWedding(StudentOrder studentOrder) {
-        return WeddingValidator.checkWedding(studentOrder);
+        WeddingValidator wd = new WeddingValidator();
+        return wd.checkWedding(studentOrder);
     }
 
     static AnswerChildren checkChildren(StudentOrder studentOrder) {
-        return ChildrenValidator.checkChildren(studentOrder);
+        ChildrenValidator childrenValidator = new ChildrenValidator();
+        return childrenValidator.checkChildren(studentOrder);
     }
 
     static AnswerStudent checkStudent(StudentOrder studentOrder) {
-        return StudentValidator.checkStudent(studentOrder);
+        StudentValidator studentValidator = new StudentValidator();
+        return studentValidator.checkStudent(studentOrder);
     }
 
     static void sendMail(StudentOrder studentOrder) {
-
+        new MailSender().sendMail(studentOrder);
     }
 }

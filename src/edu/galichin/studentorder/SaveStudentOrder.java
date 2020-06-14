@@ -1,3 +1,8 @@
+package edu.galichin.studentorder;
+
+import edu.galichin.studentorder.StudentOrderValidator;
+import edu.galichin.studentorder.domain.StudentOrder;
+
 public class SaveStudentOrder {
     public static void main(String[] args) {
         StudentOrder so = new StudentOrder();
