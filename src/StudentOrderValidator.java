@@ -6,12 +6,21 @@ public class StudentOrderValidator {
     static void checkAll() {
         StudentOrder studentOrder = readStudentOrder();
 
-        AnswerCityRegister cityAnswer = checkCityRegister(studentOrder);
-        AnswerWedding wedAnswer = checkWedding(studentOrder);
-        AnswerChildren childAnswer = checkChildren(studentOrder);
-        AnswerStudent studentAnswer = checkStudent(studentOrder);
+        while (true) {
+            if (studentOrder == null) {
+                break;
+            }
+            AnswerCityRegister cityAnswer = checkCityRegister(studentOrder);
+            if (cityAnswer.success == true) {
+                AnswerWedding wedAnswer = checkWedding(studentOrder);
+                AnswerChildren childAnswer = checkChildren(studentOrder);
+                AnswerStudent studentAnswer = checkStudent(studentOrder);
 
-        sendMail(studentOrder);
+                sendMail(studentOrder);
+                studentOrder = readStudentOrder();
+            }
+
+        }
     }
 
     static StudentOrder readStudentOrder() {
@@ -21,6 +30,7 @@ public class StudentOrderValidator {
 
     static AnswerCityRegister checkCityRegister(StudentOrder studentOrder) {
         AnswerCityRegister answer = new AnswerCityRegister();
+        answer.success = false;
         return answer;
     }
 
