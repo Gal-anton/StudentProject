@@ -35,7 +35,7 @@ public class StudentOrderValidator {
         StudentOrder[] soArray = new StudentOrder[3];
 
         for (int i = 0; i < soArray.length; i++) {
-            soArray[i] = SaveStudentOrder.buildStudentOrder();
+            soArray[i] = SaveStudentOrder.buildStudentOrder(10);
         }
 
         return soArray;
@@ -50,8 +50,6 @@ public class StudentOrderValidator {
     }
 
     private AnswerCityRegister checkCityRegister(StudentOrder studentOrder) {
-        cityRegisterValidator.hostName = "hostName1";
-        cityRegisterValidator.login = "login1";
         return cityRegisterValidator.checkCityRegister(studentOrder);
     }
 
