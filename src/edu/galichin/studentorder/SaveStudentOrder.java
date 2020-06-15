@@ -7,12 +7,12 @@ public class SaveStudentOrder {
     public static void main(String[] args) {
         StudentOrder so = buildStudentOrder();
 
-        saveStudentOrder(so);
+        saveStudentOrder();
     }
 
-    static void saveStudentOrder(StudentOrder studentOrder) {
+    static void saveStudentOrder() {
         StudentOrderValidator studentOrderValidator = new StudentOrderValidator();
-        studentOrderValidator.checkAll(studentOrder);
+        studentOrderValidator.checkAll();
     }
 
     static StudentOrder buildStudentOrder() {
