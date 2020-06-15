@@ -5,7 +5,8 @@ import edu.galichin.studentorder.domain.StudentOrder;
 
 public class SaveStudentOrder {
     public static void main(String[] args) {
-        StudentOrder so = buildStudentOrder();
+        long id = 199;
+        StudentOrder so = buildStudentOrder(id);
 
         saveStudentOrder();
     }
@@ -15,8 +16,10 @@ public class SaveStudentOrder {
         studentOrderValidator.checkAll();
     }
 
-    static StudentOrder buildStudentOrder() {
+    static StudentOrder buildStudentOrder(long id) {
         StudentOrder so = new StudentOrder();
+        so.setStudentOrderId(id);
+
         Adult husband = new Adult("Galichin","Anton", "Nicolaevich", null);
         husband.setPassportSeria("123456");
 
