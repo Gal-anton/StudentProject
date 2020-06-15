@@ -11,7 +11,8 @@ public class SaveStudentOrder {
     }
 
     static void saveStudentOrder(StudentOrder studentOrder) {
-        new StudentOrderValidator().checkAll(studentOrder);
+        StudentOrderValidator studentOrderValidator = new StudentOrderValidator();
+        studentOrderValidator.checkAll(studentOrder);
     }
 
     static StudentOrder buildStudentOrder() {
