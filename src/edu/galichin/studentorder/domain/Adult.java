@@ -10,6 +10,11 @@ public class Adult extends Person {
     private String university;
     private String studentID;
 
+    @Override
+    public String getPersonString() {
+        return super.getPersonString() + " " + passportSeria;
+    }
+
     public String getUniversity() {
         return university;
     }
