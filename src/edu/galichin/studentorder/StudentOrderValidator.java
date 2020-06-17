@@ -16,7 +16,7 @@ import java.util.List;
 
 public class StudentOrderValidator {
 
-    public static final int ITEM_NO = 3;
+    public static final int ITEM_NO = 4;
 
     private CityRegisterValidator cityRegisterValidator;
     private WeddingValidator weddingValidator;

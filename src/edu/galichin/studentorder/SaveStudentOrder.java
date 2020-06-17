@@ -9,9 +9,6 @@ import java.time.LocalDate;
 
 public class SaveStudentOrder {
     public static void main(String[] args) {
-        long id = 199;
-        StudentOrder so = buildStudentOrder(id);
-
         saveStudentOrder();
     }
 
