@@ -1,18 +1,29 @@
 package edu.galichin.studentorder.domain;
 
 public class Address {
-    private String postcode;
+    private String postCode;
     private String street;
     private String building;
     private String extension;
     private String apartment;
 
+    public Address() {
+    }
+
+    public Address(String postCode, String street, String building, String extension, String apartment) {
+        this.postCode = postCode;
+        this.street = street;
+        this.building = building;
+        this.extension = extension;
+        this.apartment = apartment;
+    }
+
     public String getPostcode() {
-        return postcode;
+        return postCode;
     }
 
     public void setPostcode(String postcode) {
-        this.postcode = postcode;
+        this.postCode = postcode;
     }
 
     public String getStreet() {

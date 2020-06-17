@@ -1,7 +1,7 @@
 package edu.galichin.studentorder.validator;
 
-import edu.galichin.studentorder.domain.AnswerCityRegister;
-import edu.galichin.studentorder.domain.CityRegisterCheckerResponse;
+import edu.galichin.studentorder.domain.register.AnswerCityRegister;
+import edu.galichin.studentorder.domain.register.CityRegisterCheckerResponse;
 import edu.galichin.studentorder.domain.StudentOrder;
 import edu.galichin.studentorder.exception.CityRegisterException;
 
@@ -23,8 +23,9 @@ public class CityRegisterValidator {
             CityRegisterCheckerResponse wAns = personChecker.checkPerson(studentOrder.getWife());
             CityRegisterCheckerResponse cAns = personChecker.checkPerson(studentOrder.getChild());
         } catch (CityRegisterException ex) {
-            ex.printStackTrace();
+            ex.printStackTrace(System.out);
         }
+
 
         return new AnswerCityRegister();
     }

@@ -1,6 +1,10 @@
 package edu.galichin.studentorder;
 
 import edu.galichin.studentorder.domain.*;
+import edu.galichin.studentorder.domain.children.AnswerChildren;
+import edu.galichin.studentorder.domain.register.AnswerCityRegister;
+import edu.galichin.studentorder.domain.student.AnswerStudent;
+import edu.galichin.studentorder.domain.wedding.AnswerWedding;
 import edu.galichin.studentorder.mail.MailSender;
 import edu.galichin.studentorder.validator.ChildrenValidator;
 import edu.galichin.studentorder.validator.CityRegisterValidator;
@@ -35,7 +39,7 @@ public class StudentOrderValidator {
         StudentOrder[] soArray = new StudentOrder[3];
 
         for (int i = 0; i < soArray.length; i++) {
-            soArray[i] = SaveStudentOrder.buildStudentOrder(10);
+            soArray[i] = SaveStudentOrder.buildStudentOrder(i);
         }
 
         return soArray;
@@ -43,10 +47,10 @@ public class StudentOrderValidator {
 
     public void checkOneOrder(StudentOrder so) {
         AnswerCityRegister cityAnswer = checkCityRegister(so);
-        AnswerWedding wedAnswer = checkWedding(so);
-        AnswerChildren childAnswer = checkChildren(so);
-        AnswerStudent studentAnswer = checkStudent(so);
-        sendMail(so);
+//        AnswerWedding wedAnswer = checkWedding(so);
+//        AnswerChildren childAnswer = checkChildren(so);
+//        AnswerStudent studentAnswer = checkStudent(so);
+//        sendMail(so);
     }
 
     private AnswerCityRegister checkCityRegister(StudentOrder studentOrder) {

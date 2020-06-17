@@ -1,6 +1,6 @@
 package edu.galichin.studentorder.validator;
 
-import edu.galichin.studentorder.domain.CityRegisterCheckerResponse;
+import edu.galichin.studentorder.domain.register.CityRegisterCheckerResponse;
 import edu.galichin.studentorder.domain.Person;
 import edu.galichin.studentorder.exception.CityRegisterException;
 

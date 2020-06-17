@@ -8,7 +8,7 @@ public class Adult extends Person {
     private LocalDate passportIssueDate;
     private String passportDepartment;
     private String university;
-    private String studentID;
+    private String studentId;
 
     public Adult(String surName,
                  String givenName,
@@ -31,12 +31,12 @@ public class Adult extends Person {
         this.university = university;
     }
 
-    public String getStudentID() {
-        return studentID;
+    public String getStudentId() {
+        return studentId;
     }
 
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
+    public void setStudentId(String studentID) {
+        this.studentId = studentID;
     }
 
     public String getPassportSeria() {
