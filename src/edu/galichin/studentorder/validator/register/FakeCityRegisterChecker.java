@@ -1,9 +1,9 @@
-package edu.galichin.studentorder.validator;
+package edu.galichin.studentorder.validator.register;
 
 import edu.galichin.studentorder.domain.Adult;
 import edu.galichin.studentorder.domain.Child;
-import edu.galichin.studentorder.domain.register.CityRegisterCheckerResponse;
 import edu.galichin.studentorder.domain.Person;
+import edu.galichin.studentorder.domain.register.CityRegisterResponse;
 import edu.galichin.studentorder.exception.CityRegisterException;
 
 public class FakeCityRegisterChecker implements CityRegisterChecker {
@@ -15,9 +15,9 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
     public static final String ERROR_1 = "1002";
     public static final String ERROR_2 = "2002";
 
-    public CityRegisterCheckerResponse checkPerson(Person person)
+    public CityRegisterResponse checkPerson(Person person)
             throws CityRegisterException {
-        CityRegisterCheckerResponse response = new CityRegisterCheckerResponse();
+        CityRegisterResponse response = new CityRegisterResponse();
         if (person instanceof Adult) {
             Adult t = (Adult) person;
             String seria = t.getPassportSeria();

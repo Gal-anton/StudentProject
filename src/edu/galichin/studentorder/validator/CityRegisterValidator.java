@@ -1,19 +1,17 @@
 package edu.galichin.studentorder.validator;
 
 import edu.galichin.studentorder.domain.Child;
+import edu.galichin.studentorder.domain.Person;
 import edu.galichin.studentorder.domain.StudentOrder;
 import edu.galichin.studentorder.domain.register.AnswerCityRegister;
-import edu.galichin.studentorder.domain.register.CityRegisterCheckerResponse;
+import edu.galichin.studentorder.domain.register.AnswerCityRegisterItem;
+import edu.galichin.studentorder.domain.register.CityRegisterResponse;
 import edu.galichin.studentorder.exception.CityRegisterException;
-
-import java.util.List;
+import edu.galichin.studentorder.validator.register.CityRegisterChecker;
+import edu.galichin.studentorder.validator.register.FakeCityRegisterChecker;
 
 public class CityRegisterValidator {
 
-    public String hostName = "default";
-    protected int port = 0;
-    private String password = "default";
-    public String login = "default";
     private CityRegisterChecker personChecker;
 
     public CityRegisterValidator() {
@@ -21,19 +19,24 @@ public class CityRegisterValidator {
     }
 
     public AnswerCityRegister checkCityRegister(StudentOrder studentOrder) {
-        try {
-            CityRegisterCheckerResponse hAns = personChecker.checkPerson(studentOrder.getHusband());
-            CityRegisterCheckerResponse wAns = personChecker.checkPerson(studentOrder.getWife());
+        AnswerCityRegister answer = new AnswerCityRegister();
 
-            List<Child> children = studentOrder.getChildren();
-            for (Child child : children) {
-                CityRegisterCheckerResponse cAns = personChecker.checkPerson(child);
-            }
-            } catch (CityRegisterException ex) {
-            ex.printStackTrace(System.out);
+        answer.addItem(checkPerson(studentOrder.getHusband()));
+        answer.addItem(checkPerson(studentOrder.getWife()));
+
+        for (Child child : studentOrder.getChildren()) {
+            answer.addItem(checkPerson(child));
         }
 
+        return answer;
+    }
 
-        return new AnswerCityRegister();
+    private AnswerCityRegisterItem checkPerson(Person person) {
+        try {
+                CityRegisterResponse cAns = personChecker.checkPerson(person);
+        } catch (CityRegisterException ex) {
+            ex.printStackTrace(System.out);
+        }
+        return null;
     }
 }

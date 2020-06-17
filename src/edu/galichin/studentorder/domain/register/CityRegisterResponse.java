@@ -1,6 +1,6 @@
 package edu.galichin.studentorder.domain.register;
 
-public class CityRegisterCheckerResponse {
+public class CityRegisterResponse {
     private boolean existing = false;
     private Boolean temporal = null;
 
@@ -22,7 +22,7 @@ public class CityRegisterCheckerResponse {
 
     @Override
     public String toString() {
-        return "CityRegisterCheckerResponse{" +
+        return "CityRegisterResponse{" +
                 "existing=" + existing +
                 ", temporal=" + temporal +
                 '}';

@@ -1,6 +1,6 @@
 package edu.galichin.studentorder;
 
-import edu.galichin.studentorder.domain.*;
+import edu.galichin.studentorder.domain.StudentOrder;
 import edu.galichin.studentorder.domain.children.AnswerChildren;
 import edu.galichin.studentorder.domain.register.AnswerCityRegister;
 import edu.galichin.studentorder.domain.student.AnswerStudent;
@@ -11,7 +11,12 @@ import edu.galichin.studentorder.validator.CityRegisterValidator;
 import edu.galichin.studentorder.validator.StudentValidator;
 import edu.galichin.studentorder.validator.WeddingValidator;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class StudentOrderValidator {
+
+    public static final int ITEM_NO = 3;
 
     private CityRegisterValidator cityRegisterValidator;
     private WeddingValidator weddingValidator;
@@ -28,21 +33,20 @@ public class StudentOrderValidator {
     }
 
     public void checkAll() {
-            StudentOrder[] studentOrdersArray = readStudentOrders();
+            List<StudentOrder> studentOrdersList = readStudentOrders();
 
-            for(StudentOrder so : studentOrdersArray) {
+            for(StudentOrder so : studentOrdersList) {
                 checkOneOrder(so);
             }
     }
 
-    public StudentOrder[] readStudentOrders() {
-        StudentOrder[] soArray = new StudentOrder[3];
+    public List<StudentOrder> readStudentOrders() {
+        List<StudentOrder> soList = new LinkedList<>();
 
-        for (int i = 0; i < soArray.length; i++) {
-            soArray[i] = SaveStudentOrder.buildStudentOrder(i);
+        for (int i = 0; i < ITEM_NO; i++) {
+            soList.add(SaveStudentOrder.buildStudentOrder(i));
         }
-
-        return soArray;
+        return soList;
     }
 
     public void checkOneOrder(StudentOrder so) {
