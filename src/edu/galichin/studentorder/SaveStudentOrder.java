@@ -53,9 +53,17 @@ public class SaveStudentOrder {
         child.setCertificateDepartment("Отдел ЗАГС №" + id);
         child.setAddress(address);
 
+
+        Child child1 = new Child("Петров", "Виктор", "Викторович", LocalDate.of(2018, 6, 29));
+        child1.setCertificateNumber("" + (400000 + id));
+        child1.setCertificateIssueDate(LocalDate.of(2018, 7, 19));
+        child1.setCertificateDepartment("Отдел ЗАГС №" + id);
+        child1.setAddress(address);
+
         so.setHusband(husband);
         so.setWife(wife);
-        so.setChild(child);
+        so.addChild(child);
+        so.addChild(child1);
 
         return so;
     }

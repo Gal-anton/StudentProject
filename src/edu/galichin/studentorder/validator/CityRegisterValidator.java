@@ -1,9 +1,12 @@
 package edu.galichin.studentorder.validator;
 
+import edu.galichin.studentorder.domain.Child;
+import edu.galichin.studentorder.domain.StudentOrder;
 import edu.galichin.studentorder.domain.register.AnswerCityRegister;
 import edu.galichin.studentorder.domain.register.CityRegisterCheckerResponse;
-import edu.galichin.studentorder.domain.StudentOrder;
 import edu.galichin.studentorder.exception.CityRegisterException;
+
+import java.util.List;
 
 public class CityRegisterValidator {
 
@@ -21,8 +24,12 @@ public class CityRegisterValidator {
         try {
             CityRegisterCheckerResponse hAns = personChecker.checkPerson(studentOrder.getHusband());
             CityRegisterCheckerResponse wAns = personChecker.checkPerson(studentOrder.getWife());
-            CityRegisterCheckerResponse cAns = personChecker.checkPerson(studentOrder.getChild());
-        } catch (CityRegisterException ex) {
+
+            List<Child> children = studentOrder.getChildren();
+            for (Child child : children) {
+                CityRegisterCheckerResponse cAns = personChecker.checkPerson(child);
+            }
+            } catch (CityRegisterException ex) {
             ex.printStackTrace(System.out);
         }
 
