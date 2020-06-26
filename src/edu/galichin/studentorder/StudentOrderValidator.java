@@ -18,11 +18,11 @@ public class StudentOrderValidator {
 
     public static final int ITEM_NO = 4;
 
-    private CityRegisterValidator cityRegisterValidator;
-    private WeddingValidator weddingValidator;
-    private ChildrenValidator childrenValidator;
-    private StudentValidator studentValidator;
-    private MailSender mailSender;
+    private final CityRegisterValidator cityRegisterValidator;
+    private final WeddingValidator weddingValidator;
+    private final ChildrenValidator childrenValidator;
+    private final StudentValidator studentValidator;
+    private final MailSender mailSender;
 
     public StudentOrderValidator() {
         cityRegisterValidator = new CityRegisterValidator();
